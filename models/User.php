@@ -53,7 +53,7 @@
             $this->phone=htmlspecialchars(strip_tags($this->phone));
             //Bind data
             $stmt->bindParam(':username',$this->username);
-            $stmt->bindParam(':password',$this->password);
+            $stmt->bindParam(':password',password_hash($this->password, PASSWORD_BCRYPT));
             $stmt->bindParam(':email',$this->email);
             $stmt->bindParam(':phone',$this->phone);
             // Execute query
@@ -81,7 +81,7 @@
             //Bind data
             $stmt->bindParam(':id',$this->id);
             $stmt->bindParam(':username',$this->username);
-            $stmt->bindParam(':password',$this->password);
+            $stmt->bindParam(':password',password_hash($this->password, PASSWORD_BCRYPT));
             $stmt->bindParam(':email',$this->email);
             $stmt->bindParam(':phone',$this->phone);
             // Execute query
